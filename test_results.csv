@@ -1,0 +1,5 @@
+eventType,playerName,age,runs,wickets,playerType
+TEST,CDE456,45,100.0,100.0,Bowler
+TEST,QRS67,24,100.0,100.0,Bowler
+TEST,abc456,34,1000.0,600.0,All-Rounder
+TEST,bnhg678,45,100.0,600.0,Bowler
