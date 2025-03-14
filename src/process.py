@@ -20,18 +20,14 @@ def classify_player(runs, wickets):
         return "Bowler"
     return None
 
-# Apply classification logic
 df["playerType"] = df.apply(lambda row: classify_player(row["runs"], row["wickets"]), axis=1)
 
-# Remove invalid players (age constraints and missing classifications)
 df_cleaned = df.dropna(subset=["playerType"])
 df_cleaned = df_cleaned[(df_cleaned["age"] >= 15) & (df_cleaned["age"] <= 50)]
 
-# Split data based on eventType
 df_odi = df_cleaned[df_cleaned["eventType"] == "ODI"]
 df_test = df_cleaned[df_cleaned["eventType"] == "TEST"]
 
-# Save results
 df_odi.to_csv("C:\\Users\\nehit\\PycharmProjects\\TCU-Dataprocessing\\odi_results.csv", index=False)
 df_test.to_csv("C:\\Users\\nehit\\PycharmProjects\\TCU-Dataprocessing\\test_results.csv", index=False)
 
