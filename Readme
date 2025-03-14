@@ -1,0 +1,53 @@
+
+This project is designed to process and validate cricket player statistics. The system reads data from multiple sources, applies predefined classification rules, and validates the results.
+
+Features
+    Reads player data from CSV and JSON files.
+    Classifies players as All-Rounder, Batsman, or Bowler.
+    Filters invalid players based on missing data and age constraints.
+    Segregates data into separate files for ODI and Test matches.
+    Generates a test_result.csv file indicating PASS/FAIL for each player.
+
+Input Data
+CSV Format (Players from 1990-2000)
+JSON Format (Players from 2000 onwards)
+
+Example dataset:
+
+{
+  "eventType": "ODI",
+  "playerName": "JohnDoe",
+  "age": 30,
+  "runs": 1200,
+  "wickets": 65
+}
+
+Processing Logic
+Read and merge data from CSV and JSON files.
+Assign Player Type based on performance:
+All-Rounder: Runs > 500 & Wickets > 50
+Batsman: Runs > 500 & Wickets ≤ 50
+Bowler: Runs < 500
+Remove players with missing stats or invalid age (<15 or >50).
+Store results in separate files:
+ODI players → odi_results.csv
+Test players → test_results.csv
+
+Validate processed data against expected output.
+
+Example of Data Processing
+
+Input Data
+
+playerName, age, runs, wickets, eventType
+JohnDoe, 30, 1200, 65, ODI
+JaneSmith, 28, 800, 20, TEST
+MikeBrown, 40, 300, 5, ODI
+
+Processing Steps
+
+JohnDoe → All-Rounder (Stored in odi_results.csv)
+
+JaneSmith → Batsman (Stored in test_results.csv)
+
+MikeBrown → Bowler (Stored in odi_results.csv)
